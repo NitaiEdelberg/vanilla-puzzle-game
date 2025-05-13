@@ -1,0 +1,55 @@
+
+    /*                                                                            page style                                                                */
+
+    :root {
+      --grid-size: 3; /* number of rows and columns (3x3) */
+      --piece-size: 100px; /* size of each piece - 100 pixels */
+      --image-size: calc(var(--grid-size) * var(--piece-size)); /* full image size (3 * 100)*/
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center ;
+      justify-content: flex-start;
+      margin: 0;
+      padding: 2rem; /* rem is around 16 pixels  */
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .puzzle-wrapper {
+      transform: scale(2);
+      transform-origin: top center;
+    }
+
+    #puzzle {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-size), var(--piece-size)); /* 3 columns - repeat(3, 100px), var for use of variable in css*/
+      grid-template-rows: repeat(var(--grid-size), var(--piece-size));
+      width: var(--image-size);
+      height: var(--image-size);
+      border: 2px solid #000;
+    }
+
+    #timer {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .piece {
+      width: var(--piece-size);
+      height: var(--piece-size);
+      background-image: url("image.jpg");
+      background-size: var(--image-size) var(--image-size);
+      box-sizing: border-box; /* make borders grow inside to not exceed the grid */
+      cursor: pointer;
+    }
+
+    .piece.selected {
+      box-shadow: inset 0 0 0 4px red; /* Highlight selected piece */
+    }
